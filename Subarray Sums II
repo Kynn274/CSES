@@ -1,2 +1,21 @@
 #include <bits/stdc++.h>
+#define fmax 200005
 using namespace std;
+
+int main(){
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    long long n, x, a[fmax], f[fmax], iC(0);
+    map<long long, int> m;
+
+    cin >> n >> x;
+    for(long long i = 0; i < n; i++) cin >> a[i];
+    for(long long i = 0; i < n; i++){
+        f[i] = f[i - 1] + a[i];
+        if(f[i] == x) iC++;
+        iC += m[f[i] - x];
+        m[f[i]]++;
+    }   
+    
+    cout << iC;
+    return 0;
+}
